@@ -214,7 +214,7 @@ public struct JSON {
             switch type {
             case .array:      return rawArray
             case .dictionary: return rawDictionary
-            case .string:     return rawString
+            case .string:     return \("rawString")
             case .number:     return rawNumber
             case .bool:       return rawBool
             default:          return rawNull
@@ -758,7 +758,7 @@ extension JSON { // : Swift.Bool
             switch type {
             case .bool:   return rawBool
             case .number: return rawNumber.boolValue
-            case .string: return ["true", "y", "t", "yes", "1"].contains { rawString.caseInsensitiveCompare($0) == .orderedSame }
+            case .string: return ["true", "y", "t", "yes", "1"].contains { \("rawString").caseInsensitiveCompare($0) == .orderedSame }
             default:      return false
             }
         }
